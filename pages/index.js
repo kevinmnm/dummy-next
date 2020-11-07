@@ -4,15 +4,31 @@ import React, { useState } from 'react';
 import theme from '../src/theme';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import { withTheme } from '@material-ui/core/styles';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+
 // import { setTheme } from '../src/theme.js';
 
-// setTheme('dark');
+const useStyles = makeStyles({
+   helloThereStyle: {
+      fontStyle: 'oblique'
+   },
+   customTypo: {
+      fontSize: '50px',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      textDecoration: 'underline',
+      textUnderlinePosition: 'under'
+   }
+});
 
 function Home(props) {
+   const classes = useStyles();
+
    return (
       <div>
-         <Box>This is jsut like a div.</Box>
+         <Typography className={classes.customTypo}>Home Page</Typography>
+         <Box className={classes.helloThereStyle}>This is jsut like a div.</Box>
          <Button variant="contained">Default</Button>
          <Button variant="contained" color="primary">
             Primary
@@ -31,4 +47,4 @@ function Home(props) {
    )
 }
 
-export default withTheme(Home);
+export default Home

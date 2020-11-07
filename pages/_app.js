@@ -13,14 +13,21 @@ import IconButton from '@material-ui/core/IconButton';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+
 // import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import Fab from '@material-ui/core/Fab';
 
-
+const useStyles = makeStyles({
+   appBarStyle: {
+      background: 'red'
+   }
+});
 
 
 export default function MyApp(props) {
    const { Component, pageProps } = props;
+   const classes = useStyles()
 
    // React.useEffect(() => {
    //    // Remove the server-side injected CSS.
@@ -45,7 +52,7 @@ export default function MyApp(props) {
          </Head>
          <ThemeProvider theme={theme(darkMode)}>
 
-            <AppBar>
+            <AppBar position="static" className={classes.appBarStyle}>
                <Toolbar>
                   <IconButton onClick={changee}>
                      <Brightness4Icon />
@@ -59,7 +66,8 @@ export default function MyApp(props) {
 
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Component {...pageProps} />
+            <Component />
+            {/* <Component {...pageProps} /> */}
 
             {/* <Fab>
                <KeyboardArrowUpIcon />
@@ -70,7 +78,7 @@ export default function MyApp(props) {
    );
 }
 
-MyApp.propTypes = {
-   Component: PropTypes.elementType.isRequired,
-   pageProps: PropTypes.object.isRequired,
-};
+// MyApp.propTypes = {
+//    Component: PropTypes.elementType.isRequired,
+//    pageProps: PropTypes.object.isRequired,
+// };
