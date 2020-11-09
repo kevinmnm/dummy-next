@@ -7,27 +7,11 @@ import { withTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-// import { setTheme } from '../src/theme.js';
 
-const useStyles = makeStyles({
-   helloThereStyle: {
-      fontStyle: 'oblique'
-   },
-   customTypo: {
-      fontSize: '50px',
-      textAlign: 'center',
-      fontWeight: 'bold',
-      textDecoration: 'underline',
-      textUnderlinePosition: 'under'
-   }
-});
-
-function Home(props) {
-   const classes = useStyles();
-
+function Home() {
    return (
       <div>
-         <Typography className={classes.customTypo}>Home Page</Typography>
+         {/* <Typography className={classes.customTypo}>Home Page</Typography>
          <Box className={classes.helloThereStyle}>This is jsut like a div.</Box>
          <Button variant="contained">Default</Button>
          <Button variant="contained" color="primary">
@@ -42,7 +26,7 @@ function Home(props) {
          <Button variant="contained" color="primary" href="#contained-buttons">
             Link
          </Button>
-         <AccessAlarmIcon />
+         <AccessAlarmIcon /> */}
       </div>
    )
 }

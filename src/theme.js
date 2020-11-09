@@ -1,30 +1,9 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-// import { red } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core';
 
-function theme(arg) {
-   return createMuiTheme({
-      palette: {
-         type: arg ? arg : 'light'
-      }
-   })
-}
-
-// A custom theme for this app
-// const theme = createMuiTheme({
-//    palette: {
-//       primary: {
-//          main: '#556cd6',
-//       },
-//       secondary: {
-//          main: '#19857b',
-//       },
-//       error: {
-//          main: red.A400,
-//       },
-//       background: {
-//          default: '#fff',
-//       }
-//    }
-// });
+const theme = darkMode => createMuiTheme({
+   palette: {
+      type: darkMode ? 'dark' : 'light'
+   }
+});
 
 export default theme;
