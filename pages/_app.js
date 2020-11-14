@@ -6,6 +6,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme.js';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+// For Redux + next setup.
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
+import store from '../redux/store.js';
+import App from 'next/app';
+
+const makeStore = () => store;
 
 const useStyle = makeStyles({
    mainPaper: {
@@ -15,9 +22,32 @@ const useStyle = makeStyles({
    }
 });
 
-export default function MyApp(props) {
+// class MyApp extends App {
+//    render() {
+//       <React.Fragment>
+//          <Head>
+//             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+//          </Head>
+//          <Provider store={store}>
+//             <ThemeProvider theme={theme(darkMode)}>
+//                <Paper className={classes.mainPaper}>
+//                   <Navbar themeChanger={darkModeHandler}></Navbar>
+//                   <CssBaseline />
+//                   <Component />
+//                   {/* <Component {...pageProps} /> */}
+//                </Paper>
+//             </ThemeProvider >
+//          </Provider>
+//       </React.Fragment >
+//    }
+// }
+
+// export default withRedux(makeStore)(MyApp);
+
+function MyApp(props) {
    const { Component, pageProps } = props;
    const classes = useStyle();
+   console.log(Component);
 
    // React.useEffect(() => {
    //    // Remove the server-side injected CSS.
@@ -39,19 +69,24 @@ export default function MyApp(props) {
          <Head>
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
          </Head>
-         <ThemeProvider theme={theme(darkMode)}>
-            <Paper className={classes.mainPaper}>
-               <Navbar themeChanger={darkModeHandler}></Navbar>
-               <CssBaseline />
-               <Component />
-               {/* <Component {...pageProps} /> */}
-            </Paper>
-         </ThemeProvider >
+         <Provider store={store}>
+            <ThemeProvider theme={theme(darkMode)}>
+               <Paper className={classes.mainPaper}>
+                  <Navbar themeChanger={darkModeHandler}></Navbar>
+                  <CssBaseline />
+                  <Component />
+                  {/* <Component {...pageProps} /> */}
+               </Paper>
+            </ThemeProvider >
+         </Provider>
       </React.Fragment >
    );
 }
 
+console.log(store);
 // MyApp.propTypes = {
 //    Component: PropTypes.elementType.isRequired,
 //    pageProps: PropTypes.object.isRequired,
 // };
+
+export default withRedux(makeStore)(MyApp);
